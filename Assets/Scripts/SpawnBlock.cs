@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class SpawnBlock : MonoBehaviour
 {
+    
     public GameObject[] blocks;
-    public int yPos = 50;
-    public int totalBlock;
-    public int blockNum;
-    public int lastBlockId=-1;
-    public float height;
     public List<GameObject> blockList = new List<GameObject>();
-    public int chopId = 5;
-    public static bool ChangeChopDir = false;
+    //int yPos = 50;
+    [SerializeField]
+    int totalBlock;
+    [SerializeField]
+    int blockNum;
+    [SerializeField]
+    int lastBlockId=-1;
+    [SerializeField]
+    float height;
+    [SerializeField]
+    int chopId = 5;
+    public ScoreManager scoreManager;
+     static bool ChangeChopDir = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +33,8 @@ public class SpawnBlock : MonoBehaviour
                 GameObject newBlock = Instantiate(blocks[0], position, transform.rotation);
                 AddToBlockList(newBlock);
             }
+        scoreManager.Score = 0;
+      
     }
 
     // Update is called once per frame
@@ -107,7 +116,8 @@ public class SpawnBlock : MonoBehaviour
         Vector3 position = transform.position + down * 0.5f;
         GameObject newBlock = Instantiate(blocks[newIndex], position, transform.rotation);
         AddToBlockList(newBlock);
-        
+        scoreManager.Score++;
+        scoreManager.ComboCounter++;
     }
     public void chopBlock()
     {
@@ -123,5 +133,7 @@ public class SpawnBlock : MonoBehaviour
             else
                 chopId = 0;
         }
+      
+
     }
 }

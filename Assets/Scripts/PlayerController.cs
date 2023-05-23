@@ -11,10 +11,12 @@ public class PlayerController : MonoBehaviour
     public AudioSource impactSfx;
     public AudioClip impactSfxClip;
     public static bool animationToggle;
+    
     private void Start()
     {
         spawnBlock = GameObject.Find("Block Spawner").GetComponent<SpawnBlock>();
         animator = GetComponent<Animator>();
+        
     }
     private void Update()
     {
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector3(-0.484f, transform.position.y, transform.position.z);
         transform.localRotation = Quaternion.Euler(0, 90, 0);
         left.Play();
+        
 
     }
     public void moveRight()
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
         transform.position = new Vector3(0.484f, transform.position.y, transform.position.z);
         transform.localRotation = Quaternion.Euler(0, -90, 0);
         right.Play();
+        
     }
     public void playerTap()
     {
