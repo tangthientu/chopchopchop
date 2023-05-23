@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     public ParticleSystem left;
     public ParticleSystem right;
+    public AudioSource impactSfx;
+    public AudioClip impactSfxClip;
     public static bool animationToggle;
     private void Start()
     {
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
     {
         spawnBlock.chopBlock();
         spawnBlock.addBlock();
+        playSfx();
     }
     public void changeAnimation()
     {
@@ -54,5 +57,9 @@ public class PlayerController : MonoBehaviour
             left.Play();
         }
        
+    }
+    public void playSfx()
+    {
+        gameObject.GetComponent<AudioSource>().PlayOneShot(impactSfxClip);
     }
 }
