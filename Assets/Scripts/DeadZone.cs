@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DeadZone : MonoBehaviour
 {
@@ -16,16 +17,20 @@ public class DeadZone : MonoBehaviour
     {
         if(other.CompareTag("deadzone"))
         {
-            Debug.Log("gameover");
-            bonk.Play();
-            player.localRotation = Quaternion.Euler(0, 180      , 0);
-            animator.Play("gameover");
-            gameoverScr.SetActive(true);
-            tapArea.SetActive(false);
+            gameOver();
         }
     }
     public void tryAgain()
     {
         Application.LoadLevel(Application.loadedLevel);
+    }
+    public void gameOver()
+    {
+        Debug.Log("gameover");
+        bonk.Play();
+        player.localRotation = Quaternion.Euler(0, 180, 0);
+        animator.Play("gameover");
+        gameoverScr.SetActive(true);
+        tapArea.SetActive(false);
     }
 }
