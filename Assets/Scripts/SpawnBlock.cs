@@ -8,11 +8,8 @@ public class SpawnBlock : MonoBehaviour
     public GameObject[] blocks;
     public List<GameObject> blockList = new List<GameObject>();
     //int yPos = 50;
-    [SerializeField]
     int totalBlock;
-    [SerializeField]
     int blockNum;
-    [SerializeField]
     int lastBlockId=-1;
     [SerializeField]
     float height;
@@ -34,7 +31,7 @@ public class SpawnBlock : MonoBehaviour
                 AddToBlockList(newBlock);
             }
         scoreManager.Score = 0;
-      
+        Time.timeScale = 0;
     }
 
     // Update is called once per frame
@@ -135,5 +132,9 @@ public class SpawnBlock : MonoBehaviour
         }
       
 
+    }
+    public void resumeGame()
+    {
+        Time.timeScale = 1;
     }
 }
