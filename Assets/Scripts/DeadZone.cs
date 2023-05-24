@@ -9,9 +9,11 @@ public class DeadZone : MonoBehaviour
     public Animator animator;
     public Transform player;
     public GameObject gameoverScr,tapArea;
+    public ScoreManager scoreManager;
     private void Start()
     {
         bonk = GetComponent<AudioSource>();
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -32,5 +34,6 @@ public class DeadZone : MonoBehaviour
         animator.Play("gameover");
         gameoverScr.SetActive(true);
         tapArea.SetActive(false);
+        scoreManager.ComboCounter = 0.5f;
     }
 }
