@@ -32,6 +32,7 @@ public class SpawnBlock : MonoBehaviour
             }
         scoreManager.Score = 0;
         Time.timeScale = 0;
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
