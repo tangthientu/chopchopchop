@@ -1,2 +1,2 @@
 # Chop Chop Chop
-Chop Chop Chop is about game chopping block and avoiding it
+Chop Chop Chop is a game about chopping block and avoiding it
